@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left-Side Navbar by Frodo</title>
+</head>
+
+<body>
+    <style>
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            --navbar-fs: 1.2rem;
+            width: 0;
+            background-color: grey;
+            transition: width 0.13s ease-in;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--navbar-fs);
+        }
+
+        .navbar.active {
+            width: 250px;
+        }
+
+        .navbar .container {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            width: 80%;
+            height: 98%;
+            white-space: nowrap;
+
+        }
+
+        .navbar-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .toggle-navbar {
+            font-size: 24px;
+            padding: 15px;
+        }
+
+        .toggle-navbar.hide {
+            visibility: hidden;
+        }
+
+        .navbar .links-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: 15px;
+        }
+
+        .navbar .space {
+            flex-grow: 1;
+        }
+
+        .navbar .bottom {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            border-top: 2px solid rgb(10, 10, 10);
+        }
+        .navbar .bottom .powered-by {
+            padding-top: 10px;
+        }
+        .navbar .bottom .socials {
+            display: flex;
+            column-gap: 20px;
+        }
+        .navbar .bottom .copyright {
+            font-size: calc(var(--navbar-fs) * 0.8);
+        }
+
+        .main {
+            flex-grow: 1;
+            background-color: rgb(90, 89, 90);
+        }
+
+        .main .header {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="toggle-navbar">❌</button>
+                </div>
+                <div class="links-column">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                    <a href="#">Link 5</a>
+                </div>
+                <div class="space">
+                </div>
+                <div class="bottom">
+                    <div class="powered-by">Powered By</div>
+                    <div class="links-column">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                    <div class="socials">
+                        <a href="#">One</a>
+                        <a href="#">Two</a>
+                    </div>
+                    <div class="copyright">
+                        © Company Name 2022
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="header">
+                <button class="toggle-navbar">≡</button>
+            </div>
+            <div class="content">
+                <h2>The rest of website here</h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        const toggles = document.querySelectorAll('.toggle-navbar');
+        const navbar = document.querySelector('.navbar');
+        toggles.forEach((toggle, idx) => {
+            toggle.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+                toggles[idx].classList.toggle('hide');
+                toggles[(idx === 0) ? 1 : 0].classList.remove('hide');
+            });
+        });
+
+    </script>
+</body>
+
+</html>
