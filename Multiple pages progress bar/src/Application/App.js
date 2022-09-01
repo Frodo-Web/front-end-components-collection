@@ -83,7 +83,7 @@ const InnerPages = () => {
 			</>
 		)
 	}
-	const Book = ({ name, totalPages }) => {
+	const Book = ({name, totalPages }) => {
 
 		const Layout = () => {
 
@@ -110,6 +110,7 @@ const InnerPages = () => {
 				{(parseInt(page) < totalPages) ? <NavLink to={`${bookPath}${parseInt(page) + 1}`}>Next Page</NavLink> : null}
 				<h2>Current page: {page}</h2>
 				{(parseInt(page) > 1) ? <NavLink to={`${bookPath}${parseInt(page) - 1}`}>Previous Page</NavLink> : null}
+				<ProgressBar bookPath={bookPath} totalPages={totalPages} currentPage={parseInt(page)} />
 			</>
 		)
 	}
